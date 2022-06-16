@@ -1,0 +1,33 @@
+---
+title: "Sta199-HW02"
+author: "Sedi Danku"
+date: "6/16/2022"
+output: html_document
+---
+
+---
+title: "HW02"
+author: "Sedi Danku"
+date: "6/15/2022"
+output: html_document
+---
+
+
+```{r libraries}
+library(ggplot2)
+library(gganimate)
+library(tidyverse)
+theme_set(theme_bw())
+```
+
+```{r data}
+earn <- read.csv("data/earn.csv")
+```
+
+```{r animated_ plot}
+ggplot(earn,aes( x = median_weekly_earn, y = n_persons, color = (race))) +
+  geom_point(alpha = 0.5)+
+   labs(title = 'Year: {frame_time}', x = 'Median Weekly Earnings', y = 'Number Of People By Group', subtitle = "Median Weekly Earnings By Race Over Time") +
+  transition_time(year) +
+  ease_aes('linear')
+```
